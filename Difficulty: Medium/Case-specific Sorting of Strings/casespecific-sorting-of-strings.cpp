@@ -2,43 +2,43 @@ class Solution {
   public:
     string caseSort(string& s) {
         // code here
-        vector<int> u(26, 0); // uppercase A-Z
-        vector<int> l(26, 0); // lowercase a-z
-        for (char c : s) {
-            if (c >= 'A' && c <= 'Z') {
-                u[c - 'A']++;
+        vector<int>u(26,0);
+        vector<int>l(26,0);
+        for(int i=0;i<s.size();i++){
+            if(s[i]>='A' && s[i]<='Z'){
+                u[s[i]-'A']++;
             }
-            if (c >= 'a' && c <= 'z') {
-                l[c - 'a']++;
+            if(s[i]>='a' && s[i]<='z'){
+                l[s[i]-'a']++;
             }
         }
-        string U = "";
-        for (int i = 0; i < 26; i++) {
-            while (u[i] > 0) {
-                U += ('A' + i);
+        string upp="";
+        string lo="";
+        for(int i=0;i<26;i++){
+            while(u[i]>0){
+                upp+=('A'+i);
                 u[i]--;
             }
-            
         }
-        string L = "";
-        for (int i = 0; i < 26; i++) {
-            while (l[i] > 0) {
-                L += ('a' + i);
+        for(int i=0;i<26;i++){
+            while(l[i]>0){
+                lo+=('a'+i);
                 l[i]--;
             }
-        }
-        int ui = 0, li = 0;
-        for (int i = 0; i < s.length(); i++) {
-            char c = s[i];
-            if (c >= 'A' && c <= 'Z') {
-                s[i] = U[ui];
-                ui++;
+        }       
+        int n=0,m=0;
+        for(int i=0;i<s.size();i++){
+            if(s[i]>='A' && s[i]<='Z'){
+                s[i]=upp[n];
+                n++;
+                
             }
-            if (c >= 'a' && c <= 'z') {
-                s[i] = L[li];
-                li++;
+            if(s[i]>='a' && s[i]<='z'){
+                s[i]=lo[m];
+                m++;
             }
         }
-        return s; 
+        return s;
+        
     }
 };
